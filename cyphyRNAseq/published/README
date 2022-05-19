@@ -1,0 +1,6 @@
+This is the config to cyPhyRNA-seq: a genome-scale RNA-seq method to detect active self-cleaving ribozymes by capturing RNAs with 2ʹ,3ʹ cyclic phosphates and 5ʹ hydroxyl ends
+
+DOI: https://doi.org/10.1080/15476286.2021.1999105
+
+Reference: https://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/195/755/GCF_000195755.1_ASM19575v1/GCF_000195755.1_ASM19575v1_genomic.fna.gz; renamed to ASM19575v1.fa.gz
+Annotation: Annotation.gff.gz; comes with this repository

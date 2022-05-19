@@ -1,0 +1,191 @@
+{
+    "WORKFLOWS": "FETCH,QC,TRIMMING,MAPPING,DEDUP,PEAKS,TRACKS",
+    "BINS": "",
+    "VERSION": "1.0.0",
+    "MAXTHREADS": "18",
+    "SETTINGS": {
+        "DeVu": {
+            "AtRNL": {
+                "SAMPLES": ["SRR14477988","SRR14477989","SRR14477991","SRR14477992"],
+                "SEQUENCING": "paired",
+                "REFERENCE": "GENOMES/ASM19575v1.fa.gz",
+                "INDEX": "GENOMES/INDICES/star",
+                "ANNOTATION": {
+                    "GFF": "GENOMES/Annotation.gff.gz"
+                },
+                "IP": "revCLIP"
+            },
+            "T4RNL": {
+                "SAMPLES": ["SRR14477990","SRR14477993"],
+                "SEQUENCING": "paired",
+                "REFERENCE": "GENOMES/ASM19575v1.fa.gz",
+                "INDEX": "GENOMES/INDICES/star",
+                "ANNOTATION": {
+                    "GFF": "GENOMES/Annotation_fix.gff.gz"
+                },
+                "IP": "iCLIP"
+            }
+        }
+    },
+    "FETCH": {
+        "TOOLS":{
+            "sra":"fasterq-dump"
+        },
+        "DeVu": {
+            "AtRNL": {
+                "sra":{
+                    "OPTIONS": {
+                        "DOWNLOAD": ""
+                    }
+                }
+            },
+            "T4RNL": {
+                "sra":{
+                    "OPTIONS": {
+                        "DOWNLOAD": ""
+                    }
+                }
+            }
+        }
+    },
+    "QC": {
+        "TOOLS":{
+            "fastqc":"fastqc"
+        },
+        "DeVu": {
+            "AtRNL": {
+                "fastqc":{
+                    "OPTIONS":
+                    {
+                        "QC": "",
+                        "MULTI": ""
+                    }
+                }
+            },
+            "T4RNL": {
+                "fastqc":{
+                    "OPTIONS":
+                    {
+                        "QC": "",
+                        "MULTI": ""
+                    }
+                }
+            }
+        }
+    },
+    "TRIMMING": {
+        "TOOLS" :
+        {
+            "trimgalore": "trim_galore"
+        },
+        "DeVu": {
+            "AtRNL": {
+                "trimgalore":{
+                    "OPTIONS":
+                    {
+                        "TRIM": "-q 15 --length 8 -e 0.15"
+                    }
+                }
+            },
+            "T4RNL": {
+                "trimgalore":{
+                    "OPTIONS":
+                    {
+                        "TRIM": "-q 15 --length 8 -e 0.15"
+                    }
+                }
+            }
+        }
+    },
+    "DEDUP": {
+        "TOOLS": {
+            "umitools": "umi_tools"
+        },
+        "DeVu": {
+            "AtRNL": {
+                "umitools":{
+                    "OPTIONS": {
+                        "EXTRACT": "--extract-method regex --bc-pattern '.+(?P<discard>TCAGATCG){e<=2}(?P<umi_1>.{8})(?P<discard_2>TGGAAT.*){e<=2}'",
+                        "DEDUP": "--extract-umi-method read_id --chimeric-pairs discard"
+                    }
+                }
+            },
+            "T4RNL": {
+                "umitools":{
+                    "OPTIONS": {
+                        "EXTRACT": "--extract-method regex --bc-pattern '.+(?P<discard>TCAGATCG){e<=2}(?P<umi_1>.{8})(?P<discard_2>TGGAAT.*){e<=2}'",
+                        "DEDUP": "--extract-umi-method read_id --chimeric-pairs discard"
+                    }
+                }
+            }
+        }
+    },
+    "MAPPING": {
+        "TOOLS": {
+            "star": "STAR"
+        },
+        "DeVu": {
+            "AtRNL": {
+                "star": {
+                    "OPTIONS": {
+                        "INDEX": "--genomeSAindexNbases 13",
+                        "MAP": "--outSAMprimaryFlag AllBestScore --outFilterMultimapNmax 20"
+                    }
+                }
+            },
+            "T4RNL": {
+                "star":{
+                    "OPTIONS": {
+                        "INDEX": "--genomeSAindexNbases 13",
+                        "MAP": "--outSAMprimaryFlag AllBestScore --outFilterMultimapNmax 20"
+                    }
+                }
+            }
+        }
+    },
+    "PEAKS": {
+        "TOOLS" :
+        {
+            "scribo" : "Piranha"
+        },
+        "DeVu": {
+            "AtRNL": {
+                "scribo": {
+                    "OPTIONS": {
+                        "PREPROCESS": "",
+                        "FINDPEAKS": "-d NegativeBinomial -p 0.1 -a 0.8"
+                    }
+                }
+            },
+            "T4RNL": {
+                "scribo": {
+                    "OPTIONS": {
+                        "PREPROCESS": "",
+                        "FINDPEAKS": "-d NegativeBinomial -p 0.1 -a 0.8"
+                    }
+                }
+            }
+        }
+    },
+    "TRACKS": {
+        "TOOLS":{
+            "ucsc": "ucsc"
+        },
+        "DeVu": {
+            "AtRNL": {
+                "ucsc":{
+                    "OPTIONS": {
+                        "UCSC": "-n Devu_cyphy_3p -s cyphy_DV -l UCSC_cyphy_DV_star -b UCSC_cyphy_DV_star"
+                    }
+                }
+            },
+            "T4RNL": {
+                "ucsc": {
+                    "OPTIONS": {
+                        "UCSC": "-n Devu_cyphy_5p -s cyphy_DV -l UCSC_cyphy_DV_star -b UCSC_cyphy_DV_star"
+                    }
+                }
+            }
+        }
+    }
+}
