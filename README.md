@@ -2,7 +2,7 @@
 
 Repository for config files of published results derived from [MONSDA](https://github.com/jfallmann/MONSDA).  
 
-Directories resemble the version of MONSDA that was used to generate results.  
+Sub-directories should be named after the Project with a meaningful ID. 
+Each sub-directory holds a README file with links to the datasets (unless SRA and FETCH is used in the config) and reference and annotation files (or the files if small enough), a short description of the project and the corresponding config file used for analysis.
 
-Sub-directories list the doi of the publication as soon as available. 
-Each sub-directory holds a file with links to the datasets, a description of the project and the corresponding config file used for analysis.
+PRs always welcome
