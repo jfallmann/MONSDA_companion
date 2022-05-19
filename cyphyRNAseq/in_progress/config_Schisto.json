@@ -1,0 +1,712 @@
+{
+    "WORKFLOWS": "QC,TRIMMING,DEDUP,MAPPING,PEAKS,TRACKS,COUNTING",
+    "BINS": "",
+    "MAXTHREADS": "16",
+    "VERSION": "1.0.0",
+    "SETTINGS": {
+        "Schisto": {
+            "010421": {
+                "threeprime": {
+                    "SAMPLES": [
+                        "AtRNL-bF",
+                        "AtRNL-bM",
+                        "AtRNL-sF",
+                        "AtRNL-sM",
+                        "transcriptome-bF",
+                        "transcriptome-bM",
+                        "transcriptome-sF",
+                        "transcriptome-sM"
+                    ],
+                    "SEQUENCING": "paired",
+                    "REFERENCE": "GENOMES/PRJEA36577_masked.fa.gz",
+                    "INDEX": "GENOMES/star/cluster",
+                    "ANNOTATION": {
+                        "GFF": "GENOMES/Schisto_WB_RZ_Cluster.gff3.gz"
+                    },
+                    "IP": "revCLIP"
+                },
+                "fiveprime": {
+                    "SAMPLES": [
+                        "T4PNK-bF",
+                        "T4PNK-bM",
+                        "T4PNK-sF",
+                        "T4PNK-sM",
+                        "T4RNL-bF",
+                        "T4RNL-bM",
+                        "T4RNL-sF",
+                        "T4RNL-sM"
+                    ],
+                    "SEQUENCING": "paired",
+                    "REFERENCE": "GENOMES/PRJEA36577_masked.fa.gz",
+                    "INDEX": "GENOMES/star/cluster",
+                    "ANNOTATION": {
+                        "GFF": "GENOMES/Schisto_WB_RZ_Cluster.gff3.gz"
+                    },
+                    "IP": "iCLIP"
+                }
+            },
+            "140421": {
+                "threeprime": {
+                    "SAMPLES": [
+                        "AtRNL-bF_S1",
+                        "AtRNL-bM_S2",
+                        "AtRNL-sF_S3",
+                        "AtRNL-sM_S4",
+                        "transcriptome-bF_S13",
+                        "transcriptome-bM_S14",
+                        "transcriptome-sF_S15",
+                        "transcriptome-sM_S16",
+                        "Smansoni-AtRNL-bF_S17",
+                        "Smansoni-AtRNL-bF-T_S19",
+                        "Smansoni-AtRNL-bM_S18",
+                        "Smansoni-AtRNL-bM-T_S20",
+                        "Smansoni-transcr-bF_S28",
+                        "Smansoni-transcr-bF-T_S30",
+                        "Smansoni-transcr-bM_S29",
+                        "Smansoni-transcr-bM-T_S31"],
+                    "SEQUENCING": "paired",
+                    "REFERENCE": "GENOMES/PRJEA36577_masked.fa.gz",
+                    "INDEX": "GENOMES/star/cluster",
+                    "ANNOTATION": {
+                        "GFF": "GENOMES/Schisto_WB_RZ_Cluster.gff3.gz"
+                    },
+                    "IP": "revCLIP"
+                },
+                "fiveprime": {
+                    "SAMPLES": [
+                        "T4PNK-bF_S9",
+                        "T4PNK-bM_S10",
+                        "T4PNK-sF_S11",
+                        "T4PNK-sM_S12",
+                        "T4RNL-bF_S5",
+                        "T4RNL-bM_S6",
+                        "T4RNL-sF_S7",
+                        "T4RNL-sM_S8",
+                        "Smansoni-T4PNK-bF_S24",
+                        "Smansoni-T4PNK-bF-T_S26",
+                        "Smansoni-T4PNK-bM_S25",
+                        "Smansoni-T4PNK-bM-T_S27",
+                        "Smansoni-T4RNL-bF_S21",
+                        "Smansoni-T4RNL-bF-T_S22",
+                        "Smansoni-T4RNL-bM-T_S23"],
+                    "SEQUENCING": "paired",
+                    "REFERENCE": "GENOMES/PRJEA36577_masked.fa.gz",
+                    "INDEX": "GENOMES/star/cluster",
+                    "ANNOTATION": {
+                        "GFF": "GENOMES/Schisto_WB_RZ_Cluster.gff3.gz"
+                    },
+                    "IP": "iCLIP"
+                }
+            },
+            "280920": {
+                "threeprime": {
+                    "SAMPLES": [
+                        "AtRNL-bM1_bM2",
+                        "AtRNL-bF1_bF2",
+                        "AtRNL-sM1_sM2",
+                        "AtRNL-sF1_sF2"
+                    ],
+                    "SEQUENCING": "paired",
+                    "REFERENCE": "/scr/k70san2/robin/GENOMES/Schisto/PRJEA36577_masked.fa.gz",
+                    "ANNOTATION": {
+                        "GFF": "/scr/k70san2/robin/GENOMES/Schisto/Schisto_WB_RZ_Cluster.gff3.gz"
+                    },
+                    "IP": "revCLIP"
+                },
+                "fiveprime": {
+                    "SAMPLES": [
+                        "T4RNL-sF",
+                        "T4RNL-bM",
+                        "T4RNL-bF",
+                        "T4RNL-sM",
+                        "transcriptome-bF",
+                        "transcriptome-sM",
+                        "transcriptome-sF",
+                        "transcriptome-bM"
+                    ],
+                    "SEQUENCING": "paired",
+                    "REFERENCE": "/scr/k70san2/robin/GENOMES/Schisto/PRJEA36577_masked.fa.gz",
+                    "ANNOTATION": {
+                        "GFF": "/scr/k70san2/robin/GENOMES/Schisto/Schisto_WB_RZ_Cluster.gff3.gz"
+                    },
+                    "IP": "iCLIP"
+                }
+            },
+            "190808": {
+                "threeprime": {
+                    "SAMPLES": [
+                        "AtRNL_female1_S_mansoni_S1",
+                        "AtRNL_female2_S_mansoni_S2",
+                        "AtRNL_female3_S_mansoni_S3",
+                        "AtRNL_male1_S_mansoni_S4",
+                        "AtRNL_male2_S_mansoni_S5",
+                        "AtRNL_male3_S_mansoni_S6"],
+                    "SEQUENCING": "paired",
+                    "REFERENCE": "GENOMES/PRJEA36577_masked.fa.gz",
+                    "INDEX": "GENOMES/star/cluster",
+                    "ANNOTATION": {
+                        "GFF": "GENOMES/Schisto_WB_RZ_Cluster.gff3.gz"
+                    },
+                    "IP": "revCLIP"
+                },
+                "fiveprime": {
+                    "SAMPLES": [
+                        "T4RNL_female1_S_mansoni_S7",
+                        "T4RNL_female2_S_mansoni_S8",
+                        "T4RNL_female3_S_mansoni_S9",
+                        "T4RNL_male1_S_mansoni_S10",
+                        "T4RNL_male2_S_mansoni_S11",
+                        "T4RNL_male3_S_mansoni_S12"],
+                    "SEQUENCING": "paired",
+                    "REFERENCE": "GENOMES/PRJEA36577_masked.fa.gz",
+                    "INDEX": "GENOMES/star/cluster",
+                    "ANNOTATION": {
+                        "GFF": "GENOMES/Schisto_WB_RZ_Cluster.gff3.gz"
+                    },
+                    "IP": "iCLIP"
+                }
+            }
+        }
+    },
+    "QC": {
+        "TOOLS": {
+            "fastqc": "fastqc"
+        },
+        "Schisto": {
+            "010421": {
+                "threeprime": {
+                    "fastqc": {
+                        "OPTIONS": {
+                            "QC": "",
+                            "MULTI": ""
+                        }
+                    }
+                },
+                "fiveprime": {
+                    "fastqc": {
+                        "OPTIONS": {
+                            "QC": "",
+                            "MULTI": ""
+                        }
+                    }
+                }
+            },
+            "140421": {
+                "threeprime": {
+                    "fastqc": {
+                        "OPTIONS": {
+                            "QC": "",
+                            "MULTI": ""
+                        }
+                    }
+                },
+                "fiveprime": {
+                    "fastqc": {
+                        "OPTIONS": {
+                            "QC": "",
+                            "MULTI": ""
+                        }
+                    }
+                }
+            },
+            "280920": {
+                "threeprime": {
+                    "fastqc": {
+                        "OPTIONS": {
+                            "QC": "",
+                            "MULTI": ""
+                        }
+                    }
+                },
+                "fiveprime": {
+                    "fastqc": {
+                        "OPTIONS": {
+                            "QC": "",
+                            "MULTI": ""
+                        }
+                    }
+                }
+            },
+            "190808": {
+                "threeprime": {
+                    "fastqc": {
+                        "OPTIONS": {
+                            "QC": "",
+                            "MULTI": ""
+                        }
+                    }
+                },
+                "fiveprime": {
+                    "fastqc": {
+                        "OPTIONS": {
+                            "QC": "",
+                            "MULTI": ""
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "TRIMMING": {
+        "TOOLS": {
+            "trimgalore": "trim_galore"
+        },
+        "Schisto": {
+            "010421": {
+                "threeprime": {
+                    "trimgalore": {
+                        "OPTIONS": {
+                            "TRIM": "-q 15 --length 8 -e 0.15"
+                        }
+                    }
+                },
+                "fiveprime": {
+                    "trimgalore": {
+                        "OPTIONS": {
+                            "TRIM": "-q 15 --length 8 -e 0.15"
+                        }
+                    }
+                }
+            },
+            "140421": {
+                "threeprime": {
+                    "trimgalore": {
+                        "OPTIONS": {
+                            "TRIM": "-q 15 --length 8 -e 0.15"
+                        }
+                    }
+                },
+                "fiveprime": {
+                    "trimgalore": {
+                        "OPTIONS": {
+                            "TRIM": "-q 15 --length 8 -e 0.15"
+                        }
+                    }
+                }
+            },
+            "280920": {
+                "threeprime": {
+                    "trimgalore": {
+                        "OPTIONS": {
+                            "TRIM": "-q 15 --length 8 -e 0.15"
+                        }
+                    }
+                },
+                "fiveprime": {
+                    "trimgalore": {
+                        "OPTIONS": {
+                            "TRIM": "-q 15 --length 8 -e 0.15"
+                        }
+                    }
+                }
+            },
+            "190808": {
+                "threeprime": {
+                    "trimgalore": {
+                        "OPTIONS": {
+                            "TRIM": "-q 15 --length 8 -e 0.15"
+                        }
+                    }
+                },
+                "fiveprime": {
+                    "trimgalore": {
+                        "OPTIONS": {
+                            "TRIM": "-q 15 --length 8 -e 0.15"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "DEDUP": {
+        "TOOLS": {
+            "umitools": "umi_tools"
+        },
+        "Schisto": {
+            "010421": {
+                "threeprime": {
+                    "umitools": {
+                        "OPTIONS": {
+                            "EXTRACT": "--extract-method regex --bc-pattern '.+(?P<discard>TCAGATCG){e<=2}(?P<umi_1>.{8})(?P<discard_2>TGGAAT.*){e<=2}'",
+                            "DEDUP": "--extract-umi-method read_id"
+                        }
+                    }
+                },
+                "fiveprime": {
+                    "umitools": {
+                        "OPTIONS": {
+                            "EXTRACT": "--extract-method regex --bc-pattern '.+(?P<discard>TCAGATCG){e<=2}(?P<umi_1>.{8})(?P<discard_2>TGGAAT.*){e<=2}'",
+                            "DEDUP": "--extract-umi-method read_id"
+                        }
+                    }
+                }
+            },
+            "140421": {
+                "threeprime": {
+                    "umitools": {
+                        "OPTIONS": {
+                            "EXTRACT": "--extract-method regex --bc-pattern '.+(?P<discard>TCAGATCG){e<=2}(?P<umi_1>.{8})(?P<discard_2>TGGAAT.*){e<=2}'",
+                            "DEDUP": "--extract-umi-method read_id"
+                        }
+                    }
+                },
+                "fiveprime": {
+                    "umitools": {
+                        "OPTIONS": {
+                            "EXTRACT": "--extract-method regex --bc-pattern '.+(?P<discard>TCAGATCG){e<=2}(?P<umi_1>.{8})(?P<discard_2>TGGAAT.*){e<=2}'",
+                            "DEDUP": "--extract-umi-method read_id"
+                        }
+                    }
+                }
+            },
+            "280920": {
+                "threeprime": {
+                    "umitools": {
+                        "OPTIONS": {
+                            "EXTRACT": "--extract-method regex --bc-pattern '.+(?P<discard>TCAGATCG){e<=2}(?P<umi_1>.{8})(?P<discard_2>TGGAAT.*){e<=2}'",
+                            "DEDUP": "--extract-umi-method read_id"
+                        }
+                    }
+                },
+                "fiveprime": {
+                    "umitools": {
+                        "OPTIONS": {
+                            "EXTRACT": "--extract-method regex --bc-pattern '.+(?P<discard>TCAGATCG){e<=2}(?P<umi_1>.{8})(?P<discard_2>TGGAAT.*){e<=2}'",
+                            "DEDUP": "--extract-umi-method read_id"
+                        }
+                    }
+                }
+            },
+            "190808": {
+                "threeprime": {
+                    "umitools": {
+                        "OPTIONS": {
+                            "EXTRACT": "--extract-method regex --bc-pattern '.+(?P<discard>TCAGATCG){e<=2}(?P<umi_1>.{8})(?P<discard_2>TGGAAT.*){e<=2}'",
+                            "DEDUP": "--extract-umi-method read_id"
+                        }
+                    }
+                },
+                "fiveprime": {
+                    "umitools": {
+                        "OPTIONS": {
+                            "EXTRACT": "--extract-method regex --bc-pattern '.+(?P<discard>TCAGATCG){e<=2}(?P<umi_1>.{8})(?P<discard_2>TGGAAT.*){e<=2}'",
+                            "DEDUP": "--extract-umi-method read_id"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "MAPPING": {
+        "TOOLS": {
+            "star": "STAR"
+        },
+        "Schisto": {
+            "010421": {
+                "threeprime": {
+                    "star": {
+                        "OPTIONS": {
+                            "INDEX": "--genomeSAindexNbases 8",
+                            "MAP": "--outSAMprimaryFlag AllBestScore --limitOutSJcollapsed 300000000 --limitIObufferSize 8200000000 --outFilterMultimapNmax 20",
+                            "EXTENSION": ""
+                        }
+                    }
+                },
+                "fiveprime": {
+                    "star": {
+                        "OPTIONS": {
+                            "INDEX": "--genomeSAindexNbases 8",
+                            "MAP": "--outSAMprimaryFlag AllBestScore --limitOutSJcollapsed 300000000 --limitIObufferSize 8200000000 --outFilterMultimapNmax 20",
+                            "EXTENSION": ""
+                        }
+                    }
+                }
+            },
+            "140421": {
+                "threeprime": {
+                    "star": {
+                        "OPTIONS": {
+                            "INDEX": "--genomeSAindexNbases 8",
+                            "MAP": "--outSAMprimaryFlag AllBestScore --limitOutSJcollapsed 300000000 --limitIObufferSize 8200000000 --outFilterMultimapNmax 20",
+                            "EXTENSION": ""
+                        }
+                    }
+                },
+                "fiveprime": {
+                    "star": {
+                        "OPTIONS": {
+                            "INDEX": "--genomeSAindexNbases 8",
+                            "MAP": "--outSAMprimaryFlag AllBestScore --limitOutSJcollapsed 300000000 --limitIObufferSize 8200000000 --outFilterMultimapNmax 20",
+                            "EXTENSION": ""
+                        }
+                    }
+                }
+            },
+            "280920": {
+                "threeprime": {
+                    "star": {
+                        "OPTIONS": {
+                            "INDEX": "--genomeSAindexNbases 8",
+                            "MAP": "--outSAMprimaryFlag AllBestScore --limitOutSJcollapsed 300000000 --limitIObufferSize 8200000000 --outFilterMultimapNmax 20",
+                            "EXTENSION": ""
+                        }
+                    }
+                },
+                "fiveprime": {
+                    "star": {
+                        "OPTIONS": {
+                            "INDEX": "--genomeSAindexNbases 8",
+                            "MAP": "--outSAMprimaryFlag AllBestScore --limitOutSJcollapsed 300000000 --limitIObufferSize 8200000000 --outFilterMultimapNmax 20",
+                            "EXTENSION": ""
+                        }
+                    }
+                }
+            },
+            "190808": {
+                "threeprime": {
+                    "star": {
+                        "OPTIONS": {
+                            "INDEX": "--genomeSAindexNbases 8",
+                            "MAP": "--outSAMprimaryFlag AllBestScore --limitOutSJcollapsed 300000000 --limitIObufferSize 8200000000 --outFilterMultimapNmax 20",
+                            "EXTENSION": ""
+                        }
+                    }
+                },
+                "fiveprime": {
+                    "star": {
+                        "OPTIONS": {
+                            "INDEX": "--genomeSAindexNbases 8",
+                            "MAP": "--outSAMprimaryFlag AllBestScore --limitOutSJcollapsed 300000000 --limitIObufferSize 8200000000 --outFilterMultimapNmax 20",
+                            "EXTENSION": ""
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "PEAKS": {
+        "TOOLS": {
+            "scyphy": "Piranha"
+        },
+        "Schisto": {
+            "010421": {
+                "threeprime": {
+                    "scyphy": {
+                        "OPTIONS": {
+                            "PREPROCESS": "",
+                            "FINDPEAKS": "-d NegativeBinomial -a 0.8"
+                        }
+                    }
+                },
+                "fiveprime": {
+                    "scyphy": {
+                        "OPTIONS": {
+                            "PREPROCESS": "",
+                            "FINDPEAKS": "-d NegativeBinomial -a 0.8"
+                        }
+                    }
+                }
+            },
+            "140421": {
+                "threeprime": {
+                    "scyphy": {
+                        "OPTIONS": {
+                            "PREPROCESS": "",
+                            "FINDPEAKS": "-d NegativeBinomial -a 0.8"
+                        }
+                    }
+                },
+                "fiveprime": {
+                    "scyphy": {
+                        "OPTIONS": {
+                            "PREPROCESS": "",
+                            "FINDPEAKS": "-d NegativeBinomial -a 0.8"
+                        }
+                    }
+                }
+            },
+            "280920": {
+                "threeprime": {
+                    "scyphy": {
+                        "OPTIONS": {
+                            "PREPROCESS": "",
+                            "FINDPEAKS": "-d NegativeBinomial -a 0.8"
+                        }
+                    }
+                },
+                "fiveprime": {
+                    "scyphy": {
+                        "OPTIONS": {
+                            "PREPROCESS": "",
+                            "FINDPEAKS": "-d NegativeBinomial -a 0.8"
+                        }
+                    }
+                }
+            },
+            "190808": {
+                "threeprime": {
+                    "scyphy": {
+                        "OPTIONS": {
+                            "PREPROCESS": "",
+                            "FINDPEAKS": "-d NegativeBinomial -a 0.8"
+                        }
+                    }
+                },
+                "fiveprime": {
+                    "scyphy": {
+                        "OPTIONS": {
+                            "PREPROCESS": "",
+                            "FINDPEAKS": "-d NegativeBinomial -a 0.8"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "TRACKS": {
+        "TOOLS": {
+            "ucsc": "ucsc"
+        },
+        "Schisto": {
+            "010421": {
+                "threeprime": {
+                    "ucsc": {
+                        "OPTIONS": {
+                            "TRACKS": "-n SCRIBO2_WB -s SCRIBO2_WB_RZ -l SCRIBO2_WB_RZ_star -b SCRIBO2_WB_RZ"
+                        }
+                    }
+                },
+                "fiveprime": {
+                    "ucsc": {
+                        "OPTIONS": {
+                            "TRACKS": "-n SCRIBO2_WB -s SCRIBO2_WB_RZ -l SCRIBO2_WB_RZ_star -b SCRIBO2_WB_RZ"
+                        }
+                    }
+                }
+            },
+            "140421": {
+                "threeprime": {
+                    "ucsc": {
+                        "OPTIONS": {
+                            "TRACKS": "-n SCRIBO2_WB -s SCRIBO2_WB_RZ -l SCRIBO2_WB_RZ_star -b SCRIBO2_WB_RZ"
+                        }
+                    }
+                },
+                "fiveprime": {
+                    "ucsc": {
+                        "OPTIONS": {
+                            "TRACKS": "-n SCRIBO2_WB -s SCRIBO2_WB_RZ -l SCRIBO2_WB_RZ_star -b SCRIBO2_WB_RZ"
+                        }
+                    }
+                }
+            },
+            "280920": {
+                "threeprime": {
+                    "ucsc": {
+                        "OPTIONS": {
+                            "TRACKS": "-n SCRIBO2_WB -s SCRIBO2_WB_RZ -l SCRIBO2_WB_RZ_star -b SCRIBO2_WB_RZ"
+                        }
+                    }
+                },
+                "fiveprime": {
+                    "ucsc": {
+                        "OPTIONS": {
+                            "TRACKS": "-n SCRIBO2_WB -s SCRIBO2_WB_RZ -l SCRIBO2_WB_RZ_star -b SCRIBO2_WB_RZ"
+                        }
+                    }
+                }
+            },
+            "190808": {
+                "threeprime": {
+                    "ucsc": {
+                        "OPTIONS": {
+                            "TRACKS": "-n SCRIBO2_WB -s SCRIBO2_WB_RZ -l SCRIBO2_WB_RZ_star -b SCRIBO2_WB_RZ"
+                        }
+                    }
+                },
+                "fiveprime": {
+                    "ucsc": {
+                        "OPTIONS": {
+                            "TRACKS": "-n SCRIBO2_WB -s SCRIBO2_WB_RZ -l SCRIBO2_WB_RZ_star -b SCRIBO2_WB_RZ"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "COUNTING": {
+        "TOOLS": {
+            "countreads": "featureCounts"
+        },
+        "FEATURES": {
+            "exon": "Parent",
+            "gene": "ID"
+        },
+        "Schisto": {
+            "010421": {
+                "threeprime": {
+                    "countreads": {
+                        "OPTIONS": {
+                            "COUNT": "-f --fraction -p -O -M -T 5 -g Name"
+                        }
+                    }
+                },
+                "fiveprime": {
+                    "countreads": {
+                        "OPTIONS": {
+                            "COUNT": "-f --fraction -p -O -M -T 5 -g Name"
+                        }
+                    }
+                }
+            },
+            "140421": {
+                "threeprime": {
+                    "countreads": {
+                        "OPTIONS": {
+                            "COUNT": "-f --fraction -p -O -M -T 5 -g Name"
+                        }
+                    }
+                },
+                "fiveprime": {
+                    "countreads": {
+                        "OPTIONS": {
+                            "COUNT": "-f --fraction -p -O -M -T 5 -g Name"
+                        }
+                    }
+                }
+            },
+            "280920": {
+                "threeprime": {
+                    "countreads": {
+                        "OPTIONS": {
+                            "COUNT": "-f --fraction -p -O -M -T 5 -g Name"
+                        }
+                    }
+                },
+                "fiveprime": {
+                    "countreads": {
+                        "OPTIONS": {
+                            "COUNT": "-f --fraction -p -O -M -T 5 -g Name"
+                        }
+                    }
+                }
+            },
+            "190808": {
+                "threeprime": {
+                    "countreads": {
+                        "OPTIONS": {
+                            "COUNT": "-f --fraction -p -O -M -T 5 -g Name"
+                        }
+                    }
+                },
+                "fiveprime": {
+                    "countreads": {
+                        "OPTIONS": {
+                            "COUNT": "-f --fraction -p -O -M -T 5 -g Name"
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

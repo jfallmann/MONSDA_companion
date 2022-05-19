@@ -1,0 +1,186 @@
+{
+    "WORKFLOWS": "QC,TRIMMING,DEDUP,MAPPING,TRACKS,PEAKS",
+    "BINS": "",
+    "MAXTHREADS": "12",
+    "VERSION": "1.0.0",
+    "SETTINGS": {
+        "DSM1294": {
+            "140421": {
+                "fiveprime": {
+                    "SAMPLES": [
+                        "Csporo-T4PNK_S38",
+                        "Csporo-T4RNL_S37"
+                    ],
+                    "SEQUENCING": "paired",
+                    "REFERENCE": "GENOMES/ASM38329v1.fa.gz",
+                    "ANNOTATION": {
+                        "GFF": "GENOMES/Annotation.gff.gz"
+                    },
+                    "IP": "iCLIP"
+                },
+                "threeprime": {
+                    "SAMPLES": [
+                        "Csporo-transcr_S39",
+                        "Csporo-AtRNL_S36"
+                    ],
+                    "SEQUENCING": "paired",
+                    "REFERENCE": "GENOMES/ASM38329v1.fa.gz",
+                    "ANNOTATION": {
+                        "GFF": "GENOMES/Annotation.gff.gz"
+                    },
+                    "IP": "revCLIP"
+                }
+            }
+        }
+    },
+    "QC": {
+        "TOOLS": {
+            "fastqc": "fastqc"
+        },
+        "DSM1294": {
+            "140421": {
+                "fiveprime": {
+                    "fastqc": {
+                        "OPTIONS": {
+                            "QC": "",
+                            "MULTI": ""
+                        }
+                    }
+                },
+                "threeprime": {
+                    "fastqc": {
+                        "OPTIONS": {
+                            "QC": "",
+                            "MULTI": ""
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "TRIMMING": {
+        "TOOLS": {
+            "trimgalore": "trim_galore"
+        },
+        "DSM1294": {
+            "140421": {
+                "fiveprime": {
+                    "trimgalore": {
+                        "OPTIONS": {
+                            "TRIM": "-q 15 --length 8 -e 0.15"
+                        }
+                    }
+                },
+                "threeprime": {
+                    "trimgalore": {
+                        "OPTIONS": {
+                            "TRIM": "-q 15 --length 8 -e 0.15"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "DEDUP": {
+        "TOOLS": {
+            "umitools": "umi_tools"
+        },
+        "DSM1294": {
+            "140421": {
+                "fiveprime": {
+                    "umitools": {
+                        "OPTIONS": {
+                            "WHITELIST": "",
+                            "EXTRACT": "--extract-method regex --bc-pattern '.+(?P<discard>TCAGATCG){e<=2}(?P<umi_1>.{8})(?P<discard_2>TGGAAT.*){e<=2}'",
+                            "DEDUP": "--extract-umi-method read_id"
+                        }
+                    }
+                },
+                "threeprime": {
+                    "umitools": {
+                        "OPTIONS": {
+                            "WHITELIST": "",
+                            "EXTRACT": "--extract-method regex --bc-pattern '.+(?P<discard>TCAGATCG){e<=2}(?P<umi_1>.{8})(?P<discard_2>TGGAAT.*){e<=2}'",
+                            "DEDUP": "--extract-umi-method read_id"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "MAPPING": {
+        "TOOLS": {
+            "star": "STAR"
+        },
+        "DSM1294": {
+            "140421": {
+                "fiveprime": {
+                    "star": {
+                        "OPTIONS": {
+                            "INDEX": "--genomeSAindexNbases 8",
+                            "MAP": "--outSAMprimaryFlag AllBestScore --limitIObufferSize 4200000000 --outFilterMultimapNmax 20 --alignIntronMax 1",
+                            "EXTENSION": ""
+                        }
+                    }
+                },
+                "threeprime": {
+                    "star": {
+                        "OPTIONS": {
+                            "INDEX": "--genomeSAindexNbases 8",
+                            "MAP": "--outSAMprimaryFlag AllBestScore --limitIObufferSize 4200000000 --outFilterMultimapNmax 20 --alignIntronMax 1",
+                            "EXTENSION": ""
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "TRACKS": {
+        "TOOLS": {
+            "ucsc": "ucsc"
+        },
+        "DSM1294": {
+            "140421": {
+                "fiveprime": {
+                    "ucsc": {
+                        "OPTIONS": {
+                            "TRACKS": "-n SCRIBO2_WB -s SCRIBO2_WB_RZ -l SCRIBO2_WB_RZ_star -b SCRIBO2_WB_RZ"
+                        }
+                    }
+                },
+                "threeprime": {
+                    "ucsc": {
+                        "OPTIONS": {
+                            "TRACKS": "-n SCRIBO2_WB -s SCRIBO2_WB_RZ -l SCRIBO2_WB_RZ_star -b SCRIBO2_WB_RZ"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "PEAKS": {
+        "TOOLS": {
+            "scyphy": "Piranha"
+        },
+        "DSM1294": {
+            "140421": {
+                "fiveprime": {
+                    "scyphy": {
+                        "OPTIONS": {
+                            "PREPROCESS": "",
+                            "FINDPEAKS": "-d NegativeBinomial -a 0.8"
+                        }
+                    }
+                },
+                "threeprime": {
+                    "scyphy": {
+                        "OPTIONS": {
+                            "PREPROCESS": "",
+                            "FINDPEAKS": "-d NegativeBinomial -a 0.8"
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
