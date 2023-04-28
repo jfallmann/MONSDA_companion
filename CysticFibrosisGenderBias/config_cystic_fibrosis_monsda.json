@@ -1,0 +1,165 @@
+{
+    "WORKFLOWS": "FETCH,QC,TRIMMING,MAPPING,DE,DAS",
+    "BINS": "",
+    "MAXTHREADS": "10",
+    "VERSION": "1.1.0",
+    "SETTINGS": {
+        "cystic_fibrosis_monsda": {
+            "SAMPLES": [
+                "SRR19451834",
+                "SRR19451844",
+                "SRR19451825",
+                "SRR19451824",
+                "SRR19451822",
+                "SRR19451850",
+                "SRR19451849",
+                "SRR19451847",
+                "SRR19451846",
+                "SRR19451831"
+            ],
+            "SEQUENCING": "paired",
+            "REFERENCE": "GENOMES/GRCh38.p13_clean.fa.gz",
+            "ANNOTATION": {
+                "GTF": "GENOMES/gencode.v37.annotation.gtf.gz",
+                "GFF": ""
+            },
+            "GROUPS": [
+                "female",
+                "female",
+                "female",
+                "female",
+                "female",
+                "male",
+                "male",
+                "male",
+                "male",
+                "male"
+            ],
+            "TYPES": "",
+            "BATCHES": "",
+            "INDEX": "",
+            "PREFIX": ""
+        }
+    },
+    "FETCH": {
+        "TOOLS": {
+            "sra": "sra"
+        },
+        "cystic_fibrosis_monsda": {
+            "sra": {
+                "OPTIONS": {
+                    "SRA": ""
+                }
+            }
+        }
+    },
+    "QC": {
+        "TOOLS": {
+            "fastqc": "fastqc"
+        },
+        "cystic_fibrosis_monsda": {
+            "fastqc": {
+                "OPTIONS": {
+                    "QC": "",
+                    "MULTI": ""
+                }
+            }
+        }
+    },
+    "TRIMMING": {
+        "TOOLS": {
+            "trimgalore": "trim_galore"
+        },
+        "cystic_fibrosis_monsda": {
+            "trimgalore": {
+                "OPTIONS": {
+                    "TRIM": "-q 15 --length 8 -e 0.15"
+                }
+            }
+        }
+    },
+    "MAPPING": {
+        "TOOLS": {
+            "star": "STAR"
+        },
+        "cystic_fibrosis_monsda": {
+            "star": {
+                "OPTIONS": {
+                    "INDEX": "--sjdbGTFfeatureExon exon --sjdbGTFtagExonParentTranscript Parent --genomeSAindexNbases 13",
+                    "MAP": "--sjdbGTFfeatureExon exon --sjdbGTFtagExonParentTranscript Parent --outSAMprimaryFlag AllBestScore",
+                    "EXTENSION": ""
+                }
+            }
+        }
+    },
+    "DE": {
+        "TOOLS": {
+            "deseq2": "Analysis/DE/DESEQ2.R",
+            "edger": "Analysis/DE/EDGER.R"
+        },
+        "CUTOFFS": {
+            "pvalue": "0.05",
+            "lfc": "1.0"
+        },
+        "COMPARABLE": {
+            "male-VS-female": [
+                [
+                    "male"
+                ],
+                [
+                    "female"
+                ]
+            ]
+        },
+        "EXCLUDE": [],
+        "cystic_fibrosis_monsda": {
+            "deseq2": {
+                "OPTIONS": {
+                    "COUNT": "-t gene -g gene_id --fraction -O",
+                    "DE": ""
+                }
+            },
+            "edger": {
+                "OPTIONS": {
+                    "COUNT": "-t gene -g gene_id --fraction -O",
+                    "DE": ""
+                }
+            }
+        }
+    },
+    "DAS": {
+        "TOOLS": {
+            "diego": "Analysis/DAS/DIEGO.py",
+            "edger": "Analysis/DAS/EDGER.R"
+        },
+        "CUTOFFS": {
+            "pvalue": "0.05",
+            "lfc": "1.0"
+        },
+        "COMPARABLE": {
+            "male-VS-female": [
+                [
+                    "male"
+                ],
+                [
+                    "female"
+                ]
+            ]
+        },
+        "EXCLUDE": [],
+        "cystic_fibrosis_monsda": {
+            "diego": {
+                "OPTIONS": {
+                    "COUNT": "-t exon -g gene_id -f --fraction -O",
+                    "DAS": "-c 10 -d 3 -q 0.01 -z 1.0 -r"
+                }
+            },
+            "edger": {
+                "OPTIONS": {
+                    "COUNT": "-t exon -g gene_id -f --fraction -O",
+                    "DAS": ""
+                }
+            }
+        }
+    }
+}
