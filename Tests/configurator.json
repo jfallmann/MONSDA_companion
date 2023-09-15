@@ -1,0 +1,276 @@
+{
+    "PREPROCESSING": "QC",
+    "WORKFLOWS": "TRIMMING,MAPPING,QC",
+    "POSTPROCESSING": "COUNTING,UCSC,DE",
+    "REFERENCE": "GENOMES",
+    "BINS": "snakes/scripts",
+    "MAXTHREADS": "1",
+    "GENOME": {
+        "Dm6": "dm6"
+    },
+    "NAME": {
+        "Genome": {
+            "unpaired": {
+                "test": "",
+                "secondtest": ""
+            }
+        }
+    },
+    "SOURCE": {
+        "Genome": {
+            "unpaired": {
+                "test": "Dm6",
+                "secondtest": "Dm6"
+            }
+        }
+    },
+    "SEQUENCING": {
+        "Genome": {
+            "unpaired": {
+                "test": "unpaired",
+                "secondtest": "unpaired"
+            }
+        }
+    },
+    "SAMPLES": {
+        "Genome": {
+            "unpaired": {
+                "test": [
+                    "Test_unpaired_R1",
+                    "Subset_GSM_unpaired_R1",
+                    "Subset_GSM_unpaired_R2",
+                    "Test_unpaired_R2"
+                ],
+                "secondtest": [
+                    "Test_unpaired_R1",
+                    "Subset_GSM_unpaired_R1",
+                    "Subset_GSM_unpaired_R2",
+                    "Test_unpaired_R2"
+                ]
+            }
+        }
+    },
+    "QC": {
+        "Genome": {
+            "unpaired": {
+                "test": {
+                    "PREENV": "fastqc",
+                    "PREBIN": "fastqc",
+                    "ENV": "fastqc",
+                    "BIN": "fastqc",
+                    "OPTIONS": [
+                        {}
+                    ]
+                },
+                "secondtest": {
+                    "PREENV": "fastqc",
+                    "PREBIN": "fastqc",
+                    "ENV": "fastqc",
+                    "BIN": "fastqc",
+                    "OPTIONS": [
+                        {}
+                    ]
+                }
+            }
+        }
+    },
+    "TRIMMING": {
+        "Genome": {
+            "unpaired": {
+                "test": {
+                    "ENV": "trimgalore",
+                    "BIN": "trim_galore",
+                    "OPTIONS": [
+                        {
+                            "-q": "15",
+                            "--length": "8",
+                            "-e": "0.15"
+                        }
+                    ]
+                },
+                "secondtest": {
+                    "ENV": "trimgalore",
+                    "BIN": "trim_galore",
+                    "OPTIONS": [
+                        {
+                            "-q": "15",
+                            "--length": "8",
+                            "-e": "0.15"
+                        }
+                    ]
+                }
+            }
+        }
+    },
+    "MAPPING": {
+        "Genome": {
+            "unpaired": {
+                "test": {
+                    "ENV": "star",
+                    "BIN": "STAR",
+                    "ANNOTATION": "dm6.gff3.gz",
+                    "OPTIONS": [
+                        {
+                            "--sjdbGTFfeatureExon": "exon",
+                            "--sjdbGTFtagExonParentTranscript": "Parent",
+                            "--genomeSAindexNbases": "13"
+                        },
+                        {
+                            "--sjdbGTFfeatureExon": "exon",
+                            "--sjdbGTFtagExonParentTranscript": "Parent",
+                            "--outSAMprimaryFlag AllBestScore": ""
+                        },
+                        "std"
+                    ]
+                },
+                "secondtest": {
+                    "ENV": "star",
+                    "BIN": "STAR",
+                    "ANNOTATION": "dm6.gff3.gz",
+                    "OPTIONS": [
+                        {
+                            "--sjdbGTFfeatureExon": "exon",
+                            "--sjdbGTFtagExonParentTranscript": "Parent",
+                            "--genomeSAindexNbases": "13"
+                        },
+                        {
+                            "--sjdbGTFfeatureExon": "exon",
+                            "--sjdbGTFtagExonParentTranscript": "Parent",
+                            "--outSAMprimaryFlag AllBestScore": ""
+                        },
+                        "std"
+                    ]
+                }
+            }
+        }
+    },
+    "COUNTING": {
+        "FEATURES": {
+            "exon": "Parent",
+            "gene": "ID"
+        },
+        "Genome": {
+            "unpaired": {
+                "test": {
+                    "ENV": "countreads",
+                    "BIN": "featureCounts",
+                    "ANNOTATION": "dm6.gff3.gz",
+                    "OPTIONS": [
+                        {
+                            "-f": "",
+                            "--fraction": "",
+                            "-p": "",
+                            "-O": "",
+                            "-M": ""
+                        }
+                    ]
+                },
+                "secondtest": {
+                    "ENV": "countreads",
+                    "BIN": "featureCounts",
+                    "ANNOTATION": "dm6.gff3.gz",
+                    "OPTIONS": [
+                        {
+                            "-f": "",
+                            "--fraction": "",
+                            "-p": "",
+                            "-O": "",
+                            "-M": ""
+                        }
+                    ]
+                }
+            }
+        }
+    },
+    "UCSC": {
+        "Genome": {
+            "unpaired": {
+                "test": {
+                    "ENV": "ucsc",
+                    "OPTIONS": [
+                        {
+                            "-n": "DM6_unpaired_Mapping",
+                            "-s": "dm6_st",
+                            "-l": "UCSC_DM6_unpaired_Mapping",
+                            "-b": "UCSC_dm6_star"
+                        }
+                    ]
+                },
+                "secondtest": {
+                    "ENV": "ucsc",
+                    "OPTIONS": [
+                        {
+                            "-n": "DM6_unpaired_Mapping",
+                            "-s": "dm6_st",
+                            "-l": "UCSC_DM6_unpaired_Mapping",
+                            "-b": "UCSC_dm6_star"
+                        }
+                    ]
+                }
+            }
+        }
+    },
+    "DE": {
+        "TOOLS": {
+            "deseq2": "Analysis/DE/DESeq2.R",
+            "edger": "Analysis/DE/EdgeR.R"
+        },
+        "COMPARABLE": {},
+        "Genome": {
+            "unpaired": {
+                "test": {
+                    "ANNOTATION": "genome_or_other.gtf.gz",
+                    "GROUPS": [
+                        "WT",
+                        "KO"
+                    ],
+                    "REPLICATES": [
+                        "SAMPLE1_r1",
+                        "SAMPLE2_r2"
+                    ],
+                    "TYPES": [
+                        "standard",
+                        "standard"
+                    ],
+                    "OPTIONS": [
+                        {
+                            "-t": "gene",
+                            "-g": "gene_id",
+                            "-f": "",
+                            "--fraction": "",
+                            "-p": "",
+                            "-O": "",
+                            "-M": ""
+                        }
+                    ]
+                },
+                "secondtest": {
+                    "ANNOTATION": "genome_or_other.gtf.gz",
+                    "GROUPS": [
+                        "WT",
+                        "KO"
+                    ],
+                    "REPLICATES": [
+                        "SAMPLE1_r1",
+                        "SAMPLE2_r2"
+                    ],
+                    "TYPES": [
+                        "standard",
+                        "standard"
+                    ],
+                    "OPTIONS": [
+                        {
+                            "-t": "gene",
+                            "-g": "gene_id",
+                            "-f": "",
+                            "--fraction": "",
+                            "-p": "",
+                            "-O": "",
+                            "-M": ""
+                        }
+                    ]
+                }
+            }
+        }
+    }
+}

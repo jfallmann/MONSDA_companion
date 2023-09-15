@@ -1,0 +1,120 @@
+{
+    "WORKFLOWS": "QC,TRIMMING,MAPPING,DE",
+    "BINS": "",
+    "MAXTHREADS": "12",
+    "VERSION": "1.1.0",
+    "SETTINGS": {
+        "testconf": {
+            "SAMPLES": [
+                "SRR16324016",
+                "SRR16324014",
+                "SRR16324015"
+            ],
+            "SEQUENCING": "paired",
+            "REFERENCE": "/home/fall/Work/Test/MONSDATest/GENOMES/Ecoli/ecoli.fa.gz",
+            "ANNOTATION": {
+                "GTF": "",
+                "GFF": "/home/fall/Work/Test/MONSDATest/GENOMES/Ecoli/ecoli.gff.gz"
+            },
+            "GROUPS": [
+                "bla",
+                "blubb",
+                "caca"
+            ],
+            "TYPES": [
+                "1",
+                "2",
+                "3"
+            ],
+            "BATCHES": [
+                "1.1",
+                "1.2",
+                "1.3"
+            ],
+            "INDEX": "",
+            "PREFIX": ""
+        }
+    },
+    "QC": {
+        "TOOLS": {
+            "fastqc": "fastqc"
+        },
+        "testconf": {
+            "fastqc": {
+                "OPTIONS": {
+                    "QC": "",
+                    "MULTI": ""
+                }
+            }
+        }
+    },
+    "TRIMMING": {
+        "TOOLS": {
+            "trimgalore": "trim_galore"
+        },
+        "testconf": {
+            "trimgalore": {
+                "OPTIONS": {
+                    "TRIM": "-q 15 --length 8 -e 0.15"
+                }
+            }
+        }
+    },
+    "MAPPING": {
+        "TOOLS": {
+            "segemehl3": "segemehl.x"
+        },
+        "testconf": {
+            "segemehl3": {
+                "OPTIONS": {
+                    "INDEX": "",
+                    "MAP": "",
+                    "EXTENSION": ""
+                }
+            }
+        }
+    },
+    "DE": {
+        "TOOLS": {
+            "deseq2": "Analysis/DE/DESEQ2.R",
+            "edger": "Analysis/DE/EDGER.R"
+        },
+        "CUTOFFS": {
+            "pvalue": "0.05",
+            "lfc": "1.5"
+        },
+        "COMPARABLE": {
+            "bla-VS-blubb": [
+                [
+                    "bla"
+                ],
+                [
+                    "blubb"
+                ]
+            ],
+            "bla-VS-caca": [
+                [
+                    "bla"
+                ],
+                [
+                    "caca"
+                ]
+            ]
+        },
+        "EXCLUDE": [],
+        "testconf": {
+            "deseq2": {
+                "OPTIONS": {
+                    "COUNT": "-t gene -g gene_id --fraction -O",
+                    "DE": "controlgenes=spike-in.list"
+                }
+            },
+            "edger": {
+                "OPTIONS": {
+                    "COUNT": "-t gene -g gene_id -f --fraction -O",
+                    "DE": "controlgenes=spike-in.list"
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,655 @@
+{
+    "PREPROCESSING": "",
+    "WORKFLOWS": "QC,MAPPING,TRIMMING",
+    "POSTPROCESSING": "DE,DEU,DAS",
+    "REFERENCE": "GENOMES",
+    "BINS": "snakes/scripts",
+    "MAXTHREADS": "6",
+    "GENOME": {
+        "Dm6": "dm6",
+        "Test": "dm6"
+    },
+    "NAME": {
+        "Dm6": {
+            "unpaired": {
+                "test": "",
+                "secondtest": ""
+            },
+            "paired": {
+                "thirdtest": ""
+            }
+        }
+    },
+    "SOURCE": {
+        "Dm6": {
+            "unpaired": {
+                "test": "Dm6",
+                "secondtest": "Dm6"
+            },
+            "paired": {
+                "thirdtest": "Dm6"
+            }
+        }
+    },
+    "SEQUENCING": {
+        "Dm6": {
+            "unpaired": {
+                "test": "unpaired",
+                "secondtest": "unpaired"
+            },
+            "paired": {
+                "thirdtest": "paired"
+            }
+        }
+    },
+    "SAMPLES": {
+        "Dm6": {
+            "unpaired": {
+                "test": [
+                    "Test_unpaired_R1"
+                ],
+                "secondtest": [
+                    "Test_unpaired_R2"
+                ]
+            },
+            "paired": {
+                "thirdtest": [
+                    "GSM_paired"
+                ]
+            }
+
+        }
+    },
+    "QC": {
+        "Dm6": {
+            "unpaired": {
+                "test": {
+                    "PREENV": "fastqc",
+                    "PREBIN": "fastqc",
+                    "ENV": "fastqc",
+                    "BIN": "fastqc",
+                    "OPTIONS": [
+                        {}
+                    ]
+                },
+                "secondtest": {
+                    "PREENV": "fastqc",
+                    "PREBIN": "fastqc",
+                    "ENV": "fastqc",
+                    "BIN": "fastqc",
+                    "OPTIONS": [
+                        {}
+                    ]
+                }
+            },
+            "paired": {
+                "thirdtest": {
+                    "PREENV": "fastqc",
+                    "PREBIN": "fastqc",
+                    "ENV": "fastqc",
+                    "BIN": "fastqc",
+                    "OPTIONS": [
+                        {}
+                    ]
+                }
+            }
+        }
+    },
+    "TRIMMING": {
+        "Dm6": {
+            "unpaired": {
+                "test": {
+                    "ENV": "trimgalore",
+                    "BIN": "trim_galore",
+                    "OPTIONS": [
+                        {
+                            "-q": "15",
+                            "--length": "8",
+                            "-e": "0.15"
+                        }
+                    ]
+                },
+                "secondtest": {
+                    "ENV": "trimgalore",
+                    "BIN": "trim_galore",
+                    "OPTIONS": [
+                        {
+                            "-q": "16",
+                            "--length": "8",
+                            "-e": "0.15"
+                        }
+                    ]
+                }
+            },
+            "paired": {
+                "thirdtest": {
+                    "ENV": "trimgalore",
+                    "BIN": "trim_galore",
+                    "OPTIONS": [
+                        {
+                            "-q": "17",
+                            "--length": "8",
+                            "-e": "0.15"
+                        }
+                    ]
+                }
+            }
+        }
+    },
+    "MAPPING": {
+        "Dm6": {
+            "unpaired": {
+                "test": {
+                    "ENV": "star",
+                    "BIN": "STAR",
+                    "ANNOTATION": "dm6.gff3.gz",
+                    "OPTIONS": [
+                        {
+                            "--sjdbGTFfeatureExon": "exon",
+                            "--sjdbGTFtagExonParentTranscript": "Parent",
+                            "--genomeSAindexNbases": "13"
+                        },
+                        {
+                            "--sjdbGTFfeatureExon": "exon",
+                            "--sjdbGTFtagExonParentTranscript": "Parent",
+                            "--outSAMprimaryFlag AllBestScore": "",
+                            "--outFilterMultimapNmax": "20"
+                        },
+                        "std"
+                    ]
+                },
+                "secondtest": {
+                    "ENV": "hisat2",
+                    "BIN": "hisat2",
+                    "OPTIONS": [
+                        {
+                        },
+                        {
+                        },
+                        "std"
+                    ]
+                }
+            },
+            "paired": {
+                "thirdtest": {
+                    "ENV": "segemehl3",
+                    "BIN": "segemehl.x",
+                    "OPTIONS": [
+                        {
+                        },
+                        {
+                            "--MEOP": "",
+                            "--splits": "",
+                            "--accuracy": "95",
+                            "--differences": "1",
+                            "--evalue": "5",
+                            "--hitstrategy": "1",
+                            "--minsize": "15",
+                            "--minfraglen": "20",
+                            "--fullname": ""
+                        },
+                        "std"
+                    ]
+                }
+            }
+        }
+    },
+    "COUNTING": {
+        "FEATURES": {
+            "exon": "Parent",
+            "gene": "ID"
+        },
+        "Dm6": {
+            "unpaired": {
+                "test": {
+                    "ENV": "countreads",
+                    "BIN": "featureCounts",
+                    "ANNOTATION": "dm6.gff3.gz",
+                    "OPTIONS": [
+                        {
+                            "-f": "",
+                            "--fraction": "",
+                            "-p": "",
+                            "-O": "",
+                            "-M": "",
+                            "-T": "5",
+                            "--readExtension3": "1"
+                        }
+                    ]
+                },
+                "secondtest": {
+                    "ENV": "countreads",
+                    "BIN": "featureCounts",
+                    "ANNOTATION": "dm6.gff3.gz",
+                    "OPTIONS": [
+                        {
+                            "-f": "",
+                            "--fraction": "",
+                            "-p": "",
+                            "-O": "",
+                            "-M": "",
+                            "-T": "5",
+                            "--readExtension3": "2"
+                        }
+                    ]
+                }
+            },
+            "paired": {
+                "thirdtest": {
+                    "ENV": "countreads",
+                    "BIN": "featureCounts",
+                    "ANNOTATION": "dm6.gff3.gz",
+                    "OPTIONS": [
+                        {
+                            "-f": "",
+                            "--fraction": "",
+                            "-p": "",
+                            "-O": "",
+                            "-M": "",
+                            "-T": "5",
+                            "--readExtension3": "3"
+                        }
+                    ]
+                },
+            }
+        }
+    },
+    "UCSC": {
+        "Dm6": {
+            "unpaired": {
+                "test": {
+                    "ENV": "ucsc",
+                    "BIN": "ucsc",
+                    "OPTIONS": [
+                        {
+                            "-n": "DM6_unpaired_Mapping",
+                            "-s": "dm6_st",
+                            "-l": "UCSC_DM6_unpaired_Mapping",
+                            "-b": "UCSC_dm6_star1"
+                        }
+                    ]
+                },
+                "secondtest": {
+                    "ENV": "ucsc",
+                    "BIN": "ucsc",
+                    "OPTIONS": [
+                        {
+                            "-n": "DM6_unpaired_Mapping",
+                            "-s": "dm6_st",
+                            "-l": "UCSC_DM6_unpaired_Mapping",
+                            "-b": "UCSC_dm6_star2"
+                        }
+                    ]
+                }
+            },
+            "paired": {
+                "thirdtest": {
+                    "ENV": "ucsc",
+                    "BIN": "ucsc",
+                    "OPTIONS": [
+                        {
+                            "-n": "DM6_unpaired_Mapping",
+                            "-s": "dm6_st",
+                            "-l": "UCSC_DM6_unpaired_Mapping",
+                            "-b": "UCSC_dm6_star3"
+                        }
+                    ]
+                }
+            }
+        }
+    },
+    #DE Analysis
+    "DE": {
+        "TOOLS" :
+        {
+          "edger" : "Analysis/DE/EDGER.R"
+        },
+      "COMPARABLE" :
+        {
+        },
+        "Dm6": {
+            "unpaired": {
+                "test": {
+                    "ANNOTATION": "dm6.gtf.gz",
+                    "GROUPS": [
+                        "ONE"
+                    ],
+                    "REPLICATES": [
+                        "Test_unpaired_R1"
+                    ],
+                    "TYPES": [
+                        "long"
+                    ],
+                    "OPTIONS": [
+                        {
+                           "-t": "gene",
+                            "-g": "gene_id",
+                            "-f": "",
+                            "--fraction": "",
+                            "-p": "",
+                            "-O": "",
+                            "-M": ""
+                        },
+                        {
+                            "--cutoff": "10"
+                        } #options for count table creation, filtering counts below threshold
+                    ]
+                },
+                "secondtest": {
+                    "ANNOTATION": "dm6.gtf.gz",
+                    "GROUPS": [
+                        "TWO"
+                    ],
+                    "REPLICATES": [
+                        "Test_unpaired_R2"
+                    ],
+                    "TYPES": [
+                        "short"
+                    ],
+                    "OPTIONS": [
+                        {
+                           "-t": "gene",
+                            "-g": "gene_id",
+                            "-f": "",
+                            "--fraction": "",
+                            "-p": "",
+                            "-O": "",
+                            "-M": ""
+                        },
+                        {
+                            "--cutoff": "10"
+                        } #options for count table creation, filtering counts below threshold
+                    ]
+                }
+            },
+            "paired": {
+                "thirdtest": {
+                    "ANNOTATION": "dm6.gtf.gz",
+                    "GROUPS": [
+                        "THREE"
+                    ],
+                    "REPLICATES": [
+                        "GSM_paired"
+                    ],
+                    "TYPES": [
+                        "long"
+                    ],
+                    "OPTIONS": [
+                        {
+                           "-t": "gene",
+                            "-g": "gene_id",
+                            "-f": "",
+                            "--fraction": "",
+                            "-p": "",
+                            "-O": "",
+                            "-M": ""
+                        },
+                        {
+                            "--cutoff": "10"
+                        } #options for count table creation, filtering counts below threshold
+                    ]
+                }
+            }
+        }
+    },
+    #DEU Analysis options
+    "DEU": {
+        "TOOLS" :
+        {
+          "dexseq" : "Analysis/DEU/DEXSeq.R"
+          #"edger" : "Analysis/DEU/EDGER.R"
+        },
+      "COMPARABLE" :
+        {
+        },
+        "Dm6": {
+            "unpaired": {
+                "test": {
+                    "ANNOTATION": "dm6.gtf.gz",
+                    "GROUPS": [
+                        "ONE"
+                    ],
+                    "REPLICATES": [
+                        "Test_unpaired_R1"
+                    ],
+                    "TYPES": [
+                        "long"
+                    ],
+                    "OPTIONS": [
+                        {
+                           "-t": "gene",
+                            "-g": "gene_id",
+                            "-f": "",
+                            "--fraction": "",
+                            "-p": "",
+                            "-O": "",
+                            "-M": ""
+                        },
+                        {
+                            "--cutoff": "10"
+                        } #options for count table creation, filtering counts below threshold
+                    ]
+                },
+                "secondtest": {
+                    "ANNOTATION": "dm6.gtf.gz",
+                    "GROUPS": [
+                        "TWO"
+                    ],
+                    "REPLICATES": [
+                        "Test_unpaired_R2"
+                    ],
+                    "TYPES": [
+                        "short"
+                    ],
+                    "OPTIONS": [
+                        {
+                           "-t": "gene",
+                            "-g": "gene_id",
+                            "-f": "",
+                            "--fraction": "",
+                            "-p": "",
+                            "-O": "",
+                            "-M": ""
+                        },
+                        {
+                            "--cutoff": "10"
+                        } #options for count table creation, filtering counts below threshold
+                    ]
+                }
+            },
+            "paired": {
+                "thirdtest": {
+                    "ANNOTATION": "dm6.gtf.gz",
+                    "GROUPS": [
+                        "THREE"
+                    ],
+                    "REPLICATES": [
+                        "GSM_paired"
+                    ],
+                    "TYPES": [
+                        "long"
+                    ],
+                    "OPTIONS": [
+                        {
+                           "-t": "gene",
+                            "-g": "gene_id",
+                            "-f": "",
+                            "--fraction": "",
+                            "-p": "",
+                            "-O": "",
+                            "-M": ""
+                        },
+                        {
+                            "--cutoff": "10"
+                        } #options for count table creation, filtering counts below threshold
+                    ]
+                }
+            }
+        }
+    },
+#DAS Analysis options for Differential Exon Usage
+    "DAS" : {
+        "TOOLS" :
+        {
+            "edger"  : "Analysis/DAS/EDGER.R",
+            "diego"  : "Analysis/DAS/DIEGO.py"
+        },
+        "COMPARABLE" :
+        {
+            "contrast_WTvsKO": [["WT"],["KO1","KO2"]]
+        },
+        "Dm6": {
+            "unpaired": {
+                "test": {
+                    "ANNOTATION": "dm6.gtf.gz",
+                    "GROUPS": [
+                        "ONE"
+                    ],
+                    "REPLICATES": [
+                        "Test_unpaired_R1"
+                    ],
+                    "TYPES": [
+                        "long"
+                    ],
+                    "OPTIONS": [
+                       { # counting options
+                            "-t": "exon",
+                            "-g": "gene_id",
+                            "-f": "",
+                            "--fraction": "",
+                            "-O": ""
+                        },
+                        {
+                            "--cutoff": "10"
+                        }, #options for count table creation, filtering counts below threshold
+                        { # analysis options for diego
+                            "-c": "10",
+                            "-d": "3",
+                            "-q": "0.01",
+                            "-z": "1.0",
+                            "-r": "",
+                        }
+                    ]
+                },
+                "secondtest": {
+                    "ANNOTATION": "dm6.gtf.gz",
+                    "GROUPS": [
+                        "TWO"
+                    ],
+                    "REPLICATES": [
+                        "Test_unpaired_R2"
+                    ],
+                    "TYPES": [
+                        "short"
+                    ],
+                    "OPTIONS": [
+                       { # counting options
+                            "-t": "exon",
+                            "-g": "gene_id",
+                            "-f": "",
+                            "--fraction": "",
+                            "-O": ""
+                        },
+                        {
+                            "--cutoff": "10"
+                        }, #options for count table creation, filtering counts below threshold
+                        { # analysis options for diego
+                            "-c": "10",
+                            "-d": "3",
+                            "-q": "0.01",
+                            "-z": "1.0",
+                            "-r": "",
+                        }
+                    ]
+                }
+            },
+            "paired": {
+                "thirdtest": {
+                    "ANNOTATION": "dm6.gtf.gz",
+                    "GROUPS": [
+                        "THREE"
+                    ],
+                    "REPLICATES": [
+                        "GSM_paired"
+                    ],
+                    "TYPES": [
+                        "long"
+                    ],
+                    "OPTIONS": [
+                       { # counting options
+                            "-t": "exon",
+                            "-g": "gene_id",
+                            "-f": "",
+                            "--fraction": "",
+                            "-O": ""
+                        },
+                        {
+                            "--cutoff": "10"
+                        }, #options for count table creation, filtering counts below threshold
+                        { # analysis options for diego
+                            "-c": "10",
+                            "-d": "3",
+                            "-q": "0.01",
+                            "-z": "1.0",
+                            "-r": ""
+                        }
+                    ]
+                }
+            }
+        }
+    },
+#PEAKS Analysis options
+    "PEAKS": {
+        "Dm6": {
+            "unpaired": {
+                "test": {
+                    "ENV": "peaks",
+                    "ANNOTATION": "dm6.gtf.gz",
+                    "CLIP": "reCLIP",
+                    "OPTIONS": [
+                        {
+                            "MINPEAKRATIO": "0.7",
+                            "PEAKDISTANCE": "1",
+                            "PEAKWIDTH": "1",
+                            "PEAKCUTOFF": "0.8",
+                            "MINPEAKHEIGHT": "30",
+                            "USRLIMIT": "10"
+                        }
+                    ]
+                },
+                "secondtest": {
+                    "ENV": "peaks",
+                    "ANNOTATION": "dm6.gtf.gz",
+                    "CLIP": "iCLIP",
+                    "OPTIONS": [
+                        {
+                            "MINPEAKRATIO": "0.7",
+                            "PEAKDISTANCE": "1",
+                            "PEAKWIDTH": "1",
+                            "PEAKCUTOFF": "0.8",
+                            "MINPEAKHEIGHT": "30",
+                            "USRLIMIT": "10"
+                        }
+                    ]
+                }
+            },
+            "paired": {
+                "thirdtest": {
+                    "ENV": "peaks",
+                    "ANNOTATION": "dm6.gtf.gz",
+                    "CLIP": "revCLIP",
+                    "OPTIONS": [
+                        {
+                            "MINPEAKRATIO": "0.7",
+                            "PEAKDISTANCE": "1",
+                            "PEAKWIDTH": "1",
+                            "PEAKCUTOFF": "0.8",
+                            "MINPEAKHEIGHT": "30",
+                            "USRLIMIT": "10"
+                        }
+                    ]
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,467 @@
+{
+    "WORKFLOWS": "QC, TRIMMING, MAPPING, DEDUP, DEU",  # "MAPPING, QC, DEDUP, TRIMMING, COUNTING, UCSC, PEAKS, ANNOTATE, DE, DEU, DAS"
+    "BINS": "nextsnakes/scripts",
+    "MAXTHREADS": "6",
+    "SETTINGS": {
+        "Dm6": {
+            "single": {
+                "bla": {
+                    "SAMPLES": [
+                        "Test_unpaired_R1", "Test_unpaired_R2"
+                    ],
+                    "GROUPS": [
+                        "ONE", "ONE"
+                    ],
+                    "TYPES": [
+                        "long", "long"
+                    ],
+                    "BATCHES": [
+                        "1", "1"
+                    ],
+                    "SEQUENCING": "single",
+                    "REFERENCE": "GENOMES/Dm6/dm6.fa.gz",
+                    "PREFIX": "idx",
+                    "ANNOTATION": {
+                        "GFF": "GENOMES/Dm6/dm6.gff3.gz",
+                        "GTF": "GENOMES/Dm6/dm6.gtf.gz"
+                    },
+                    "IP": "iCLIP"
+                },
+                "blubb": {
+                    "SAMPLES": [
+                        "GSM_paired"
+                    ],
+                    "GROUPS": [
+                        "TWO"
+                    ],
+                    "TYPES": [
+                        "short"
+                    ],
+                    "BATCHES": [
+                        "2"
+                    ],
+                    "SEQUENCING": "paired",
+                    "REFERENCE": "GENOMES/Dm6/dm6.fa.gz",
+                    "PREFIX": "idx",
+                    "ANNOTATION": {
+                        "GFF": "GENOMES/Dm6/dm6.gff3.gz",
+                        "GTF": "GENOMES/Dm6/dm6.gtf.gz"
+                    },
+                    "IP": "iCLIP"
+                }
+            }
+        }
+    },
+    "QC": {
+        "TOOLS" :
+        {
+            "fastqc" : "fastqc"
+        },
+        "Dm6": {
+            "single": {
+                "bla": {
+                    "fastqc": {
+                        "OPTIONS": [
+                            {}
+                        ]
+                    }
+                },
+                "blubb": {
+                    "fastqc": {
+                        "OPTIONS": [
+                            {}
+                        ]
+                    }
+                }
+            }
+        }
+    },
+    "TRIMMING": {
+        "TOOLS" :
+        {
+            "trimgalore": "trim_galore",
+            "cutadapt": "cutadapt"
+        },
+        "Dm6": {
+            "single": {
+                "bla": {
+                    "trimgalore": {
+                        "OPTIONS": [
+                            {
+                                "-q": "15",
+                                "--length": "8",
+                                "-e": "0.15"
+                            }
+                        ]
+                    },
+                    "cutadapt": {
+                        "OPTIONS": [
+                            {
+                                "-q": "15",
+                                "-m": "8",
+                                "-e": "0.15"
+                            }
+                        ]
+                    }
+                },
+                "blubb": {
+                    "trimgalore": {
+                        "OPTIONS": [
+                            {
+                                "-q": "15",
+                                "--length": "8",
+                                "-e": "0.15"
+                            }
+                        ]
+                    },
+                    "cutadapt": {
+                        "OPTIONS": [
+                            {
+                                "-q": "15",
+                                "-m": "8",
+                                "-e": "0.15"
+                            }
+                        ]
+                    }
+                }
+            }
+        }
+    },
+    "DEDUP": {
+        "TOOLS": {
+            "umitools": "umi_tools"
+        },
+        "Dm6": {
+            "single":{
+                "bla": {
+                    "umitools": {
+                        "OPTIONS": [
+                            {},
+                            {
+                                "--extract-method": "string",
+                                "--bc-pattern": "AGANNNNACGT"
+                            },
+                            {
+                                "--extract-umi-method": "read_id"
+                            }
+                        ]
+                    }
+                },
+                "blubb":{
+                    "umitools": {
+                        "OPTIONS": [
+                            {},
+                            {
+                                "--extract-method": "string",
+                                "--bc-pattern": "AGANNNNACGT"
+                            },
+                            {
+                                "--extract-umi-method": "read_id"
+                            }
+                        ]
+                    }
+                }
+            }
+        }
+    },
+    "MAPPING": {
+        "TOOLS": {
+            "star": "STAR",
+            "segemehl3": "segemehl.x",
+            "hisat2": "hisat2",
+            "bwa": "bwa mem",
+            "minimap": "minimap2"
+        },
+        "Dm6": {
+            "single": {
+                "bla": {
+                    "star": {
+                        "OPTIONS": [
+                            {
+                                "--sjdbGTFfeatureExon": "exon",
+                                "--sjdbGTFtagExonParentTranscript": "Parent",
+                                "--genomeSAindexNbases": "14"
+                            },
+                            {
+                                "--sjdbGTFfeatureExon": "exon",
+                                "--sjdbGTFtagExonParentTranscript": "Parent",
+                                "--outSAMprimaryFlag AllBestScore": "",
+                                "--outFilterMultimapNmax": "20"
+                            }
+                        ]
+                    },
+                    "segemehl3": {
+                        "OPTIONS": [
+                            {
+                            },
+                            {
+                                "--MEOP": "",
+                                "--splits": "",
+                                "--accuracy": "95",
+                                "--differences": "1",
+                                "--evalue": "5",
+                                "--hitstrategy": "1",
+                                "--minsize": "15",
+                                "--minfraglen": "20"
+                            }
+                        ]
+                    },
+                    "hisat2": {
+                        "OPTIONS": [
+                            {
+                            },
+                            {
+                            }
+                        ]
+                    },
+                    "bwa": {
+                        "OPTIONS": [
+                            {
+                                "-a": "bwtsw"
+                            },
+                            {
+                                "-a": ""
+                            }
+                        ]
+                    },
+                    "minimap": {
+                        "OPTIONS": [
+                            {  #indexing options
+                               "-k": "15"#option for setting kmer size while indexing
+                            },
+                            {  #mapping options
+                               "-ax": "sr",
+                               "-ub": "",
+                               "-Y": "",
+                               "-L": "",
+                               "--MD": ""
+                            }
+                        ]
+                    }
+                },
+                "blubb": {
+                    "star": {
+                        "OPTIONS": [
+                            {
+                                "--sjdbGTFfeatureExon": "exon",
+                                "--sjdbGTFtagExonParentTranscript": "Parent",
+                                "--genomeSAindexNbases": "14"
+                            },
+                            {
+                                "--sjdbGTFfeatureExon": "exon",
+                                "--sjdbGTFtagExonParentTranscript": "Parent",
+                                "--outSAMprimaryFlag AllBestScore": "",
+                                "--outFilterMultimapNmax": "20"
+                            }
+                        ]
+                    },
+                    "segemehl": {
+                        "OPTIONS": [
+                            {
+                            },
+                            {
+                                "--splits": "",
+                                "--accuracy": "95",
+                                "--differences": "1",
+                                "--evalue": "5",
+                                "--minsize": "15"
+                            }
+                        ]
+                    },
+                    "segemehl3": {
+                        "OPTIONS": [
+                            {
+                            },
+                            {
+                                "--MEOP": "",
+                                "--splits": "",
+                                "--accuracy": "95",
+                                "--differences": "1",
+                                "--evalue": "5",
+                                "--hitstrategy": "1",
+                                "--minsize": "15",
+                                "--minfraglen": "20"
+                            }
+                        ]
+                    },
+                    "hisat2": {
+                        "OPTIONS": [
+                            {
+                            },
+                            {
+                            }
+                        ]
+                    },
+                    "bwa": {
+                        "OPTIONS": [
+                            {
+                                "-a": "bwtsw"
+                            },
+                            {
+                                "-a": ""
+                            }
+                        ]
+                    },
+                    "minimap": {
+                        "OPTIONS": [
+                            {  #indexing options
+                               "-k": "15"#option for setting kmer size while indexing
+                            },
+                            {  #mapping options
+                               "-ax": "sr",
+                               "-ub": "",
+                               "-Y": "",
+                               "-L": "",
+                               "--MD": ""
+                            }
+                        ]
+                    }
+                }
+            }
+        }
+    },
+    "COUNTING": {
+        "FEATURES": {
+            "exon": "gene_id",
+            "gene": "gene_id"
+        },
+        "TOOLS": {
+            "countreads": "featureCounts"
+        },
+        "Dm6": {
+            "single": {
+                "bla": {
+                    "countreads": {
+                        "OPTIONS": [
+                            {
+                                "-f": "",
+                                "--fraction": "",
+                                "-p": "",
+                                "-O": "",
+                                "-M": ""
+                            }
+                        ]
+                    }
+                },
+                "blubb": {
+                    "countreads": {
+                        "OPTIONS": [
+                            {
+                                "-f": "",
+                                "--fraction": "",
+                                "-p": "",
+                                "-O": "",
+                                "-M": ""
+                            }
+                        ]
+                    }
+                }
+            }
+        }
+    },
+    "UCSC": {
+        "TOOLS": {
+            "ucsc": "ucsc"
+        },
+        "Dm6": {
+            "single": {
+                "bla": {
+                    "ucsc": {
+                        "OPTIONS": [
+                            {
+                                "-n": "DM6_single_Mapping",
+                                "-s": "dm6_st",
+                                "-l": "UCSC_DM6_single_Mapping",
+                                "-b": "UCSC_dm6_star1"
+                            }
+                        ]
+                    }
+                },
+                "blubb": {
+                    "ucsc": {
+                        "OPTIONS": [
+                            {
+                                "-n": "DM6_single_Mapping",
+                                "-s": "dm6_st",
+                                "-l": "UCSC_DM6_single_Mapping",
+                                "-b": "UCSC_dm6_star1"
+                            }
+                        ]
+                    }
+                }
+            }
+        }
+    },
+#DEU Analysis options
+    "DEU": {
+        "TOOLS" :
+        {
+#            "dexseq" : "Analysis/DEU/DEXSeq.R",
+            "edger" : "Analysis/DEU/EDGER.R"
+        },
+        "COMPARABLE" :
+        {
+        },
+        "EXCLUDE": [ "Test_single_R1" ],
+        "CUTOFFS": {
+            "pvalue": "0.05",
+            "lfc": "1.5"
+        },
+        "Dm6": {
+            "single": {
+                "bla": {
+                    "dexseq": {
+                        "OPTIONS": [
+                            {
+                                "-t": "gene",
+                                "-g": "gene_id",
+                                "--fraction": "",
+                                "-p": "",
+                                "-O": "",
+                                "-M": ""
+                            }
+                        ]
+                    },
+                    "edger": {
+                        "OPTIONS": [
+                            {
+                                "-t": "gene",
+                                "-g": "gene_id",
+                                "--fraction": "",
+                                "-p": "",
+                                "-O": "",
+                                "-M": ""
+                            }
+                        ]
+                    }
+                },
+                "blubb": {
+                    "dexseq": {
+                        "OPTIONS": [
+                            {
+                                "-t": "gene",
+                                "-g": "gene_id",
+                                "--fraction": "",
+                                "-p": "",
+                                "-O": "",
+                                "-M": ""
+                            }
+                        ]
+                    },
+                    "edger": {
+                        "OPTIONS": [
+                            {
+                                "-t": "gene",
+                                "-g": "gene_id",
+                                "--fraction": "",
+                                "-p": "",
+                                "-O": "",
+                                "-M": ""
+                            }
+                        ]
+                    }
+                }
+            }
+        }
+    }
+}

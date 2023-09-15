@@ -1,0 +1,711 @@
+{
+    "PREPROCESSING": "QC",
+    "WORKFLOWS": "",
+    "POSTPROCESSING": "",
+    "REFERENCE": "GENOMES",
+    "BINS": "snakes/scripts",
+    "MAXTHREADS": "6",
+    "GENOME": {
+        "Dm6": "dm6",
+        "Test": "dm6"
+    },
+    "NAME": {
+        "Dm6": {
+            "unpaired": {
+                "test": "",
+                "secondtest": ""
+            },
+            "paired": {
+                "thirdtest": ""
+            }
+        },
+        "ID": {
+            "unpaired": {
+                "fourthtest": ""
+            }
+        }
+    },
+    "SOURCE": {
+        "Dm6": {
+            "unpaired": {
+                "test": "Dm6",
+                "secondtest": "Dm6"
+            },
+            "paired": {
+                "thirdtest": "Dm6"
+            }
+        },
+        "ID": {
+            "unpaired": {
+                "fourthtest": "Test"
+            }
+        }
+    },
+    "SEQUENCING": {
+        "Dm6": {
+            "unpaired": {
+                "test": "unpaired",
+                "secondtest": "unpaired"
+            },
+            "paired": {
+                "thirdtest": "paired"
+            }
+        },
+        "ID": {
+            "unpaired": {
+                "fourthtest": "unpaired"
+            }
+        }
+    },
+    "SAMPLES": {
+        "Dm6": {
+            "unpaired": {
+                "test": [
+                    "Test_unpaired_R1"
+                ],
+                "secondtest": [
+                    "Test_unpaired_R2"
+                ]
+            },
+            "paired": {
+                "thirdtest": [
+                    "GSM_paired"
+                ]
+            }
+
+        },
+        "ID": {
+            "unpaired": {
+                "fourthtest": [
+                    "Subset_GSM_unpaired_R1",
+                    "Subset_GSM_unpaired_R2"
+                ]
+            }
+        }
+    },
+    "QC": {
+        "Dm6": {
+            "unpaired": {
+                "test": {
+                    "PREENV": "fastqc",
+                    "PREBIN": "fastqc",
+                    "ENV": "fastqc",
+                    "BIN": "fastqc",
+                    "OPTIONS": [
+                        {}
+                    ]
+                },
+                "secondtest": {
+                    "PREENV": "fastqc",
+                    "PREBIN": "fastqc",
+                    "ENV": "fastqc",
+                    "BIN": "fastqc",
+                    "OPTIONS": [
+                        {}
+                    ]
+                }
+            },
+            "paired": {
+                "thirdtest": {
+                    "PREENV": "fastqc",
+                    "PREBIN": "fastqc",
+                    "ENV": "fastqc",
+                    "BIN": "fastqc",
+                    "OPTIONS": [
+                        {}
+                    ]
+                }
+            }
+        },
+        "ID": {
+            "unpaired": {
+                "fourthtest": {
+                    "PREENV": "fastqc",
+                    "PREBIN": "fastqc",
+                    "ENV": "fastqc",
+                    "BIN": "fastqc",
+                    "OPTIONS": [
+                        {}
+                    ]
+                }
+            }
+        }
+    },
+    "TRIMMING": {
+        "Dm6": {
+            "unpaired": {
+                "test": {
+                    "ENV": "trimgalore",
+                    "BIN": "trim_galore",
+                    "OPTIONS": [
+                        {
+                            "-q": "15",
+                            "--length": "8",
+                            "-e": "0.15"
+                        }
+                    ]
+                },
+                "secondtest": {
+                    "ENV": "trimgalore",
+                    "BIN": "trim_galore",
+                    "OPTIONS": [
+                        {
+                            "-q": "16",
+                            "--length": "8",
+                            "-e": "0.15"
+                        }
+                    ]
+                }
+            },
+            "paired": {
+                "thirdtest": {
+                    "ENV": "trimgalore",
+                    "BIN": "trim_galore",
+                    "OPTIONS": [
+                        {
+                            "-q": "17",
+                            "--length": "8",
+                            "-e": "0.15"
+                        }
+                    ]
+                }
+            }
+        },
+        "ID": {
+            "unpaired": {
+                "fourthtest": {
+                    "ENV": "trimgalore",
+                    "BIN": "trim_galore",
+                    "OPTIONS": [
+                        {
+                            "-q": "18",
+                            "--length": "8",
+                            "-e": "0.15"
+                        }
+                    ]
+                }
+            }
+        }
+    },
+    "MAPPING": {
+        "Dm6": {
+            "unpaired": {
+                "test": {
+                    "ENV": "star",
+                    "BIN": "STAR",
+                    "ANNOTATION": "dm6.gff3.gz",
+                    "OPTIONS": [
+                        {
+                            "--sjdbGTFfeatureExon": "exon",
+                            "--sjdbGTFtagExonParentTranscript": "Parent",
+                            "--genomeSAindexNbases": "13"
+                        },
+                        {
+                            "--sjdbGTFfeatureExon": "exon",
+                            "--sjdbGTFtagExonParentTranscript": "Parent",
+                            "--outSAMprimaryFlag AllBestScore": "",
+                            "--outFilterMultimapNmax": "20"
+                        },
+                        "std"
+                    ]
+                },
+                "secondtest": {
+                    "ENV": "hisat2",
+                    "BIN": "hisat2",
+                    "OPTIONS": [
+                        {
+                        },
+                        {
+                        },
+                        "std"
+                    ]
+                }
+            },
+            "paired": {
+                "thirdtest": {
+                    "ENV": "segemehl3",
+                    "BIN": "segemehl.x",
+                    "OPTIONS": [
+                        {
+                        },
+                        {
+                            "--MEOP": "",
+                            "--splits": "",
+                            "--accuracy": "95",
+                            "--differences": "1",
+                            "--evalue": "5",
+                            "--hitstrategy": "1",
+                            "--minsize": "15",
+                            "--minfraglen": "20",
+                            "--fullname": ""
+                        },
+                        "std"
+                    ]
+                }
+            }
+        },
+        "ID": {
+            "unpaired": {
+                "fourthtest": {
+                    "ENV": "bwa",
+                    "BIN": "bwa mem",
+                    "OPTIONS": [
+                        {
+                            "-a": "bwtsw"
+                        },
+                        {
+                        "-a": ""
+                        },
+                        "std"
+                    ]
+                }
+            }
+        }
+    },
+    "COUNTING": {
+        "FEATURES": {
+            "exon": "Parent",
+            "gene": "ID"
+        },
+        "Dm6": {
+            "unpaired": {
+                "test": {
+                    "ENV": "countreads",
+                    "BIN": "featureCounts",
+                    "ANNOTATION": "dm6.gff3.gz",
+                    "OPTIONS": [
+                        {
+                            "-f": "",
+                            "--fraction": "",
+                            "-p": "",
+                            "-O": "",
+                            "-M": "",
+                            "-T": "5",
+                            "--readExtension3": "1"
+                        }
+                    ]
+                },
+                "secondtest": {
+                    "ENV": "countreads",
+                    "BIN": "featureCounts",
+                    "ANNOTATION": "dm6.gff3.gz",
+                    "OPTIONS": [
+                        {
+                            "-f": "",
+                            "--fraction": "",
+                            "-p": "",
+                            "-O": "",
+                            "-M": "",
+                            "-T": "5",
+                            "--readExtension3": "2"
+                        }
+                    ]
+                }
+            },
+            "paired": {
+                "thirdtest": {
+                    "ENV": "countreads",
+                    "BIN": "featureCounts",
+                    "ANNOTATION": "dm6.gff3.gz",
+                    "OPTIONS": [
+                        {
+                            "-f": "",
+                            "--fraction": "",
+                            "-p": "",
+                            "-O": "",
+                            "-M": "",
+                            "-T": "5",
+                            "--readExtension3": "3"
+                        }
+                    ]
+                },
+            }
+        },
+        "ID": {
+            "unpaired": {
+                "fourthtest": {
+                    "ENV": "countreads",
+                    "BIN": "featureCounts",
+                    "ANNOTATION": "dm6.gff3.gz",
+                    "OPTIONS": [
+                        {
+                            "-f": "",
+                            "--fraction": "",
+                            "-p": "",
+                            "-O": "",
+                            "-M": "",
+                            "-T": "5",
+                            "--readExtension3": "4"
+                        }
+                    ]
+                }
+            }
+        }
+    },
+    "UCSC": {
+        "Dm6": {
+            "unpaired": {
+                "test": {
+                    "ENV": "ucsc",
+                    "BIN": "ucsc",
+                    "OPTIONS": [
+                        {
+                            "-n": "DM6_unpaired_Mapping",
+                            "-s": "dm6_st",
+                            "-l": "UCSC_DM6_unpaired_Mapping",
+                            "-b": "UCSC_dm6_star1"
+                        }
+                    ]
+                },
+                "secondtest": {
+                    "ENV": "ucsc",
+                    "BIN": "ucsc",
+                    "OPTIONS": [
+                        {
+                            "-n": "DM6_unpaired_Mapping",
+                            "-s": "dm6_st",
+                            "-l": "UCSC_DM6_unpaired_Mapping",
+                            "-b": "UCSC_dm6_star2"
+                        }
+                    ]
+                }
+            },
+            "paired": {
+                "thirdtest": {
+                    "ENV": "ucsc",
+                    "BIN": "ucsc",
+                    "OPTIONS": [
+                        {
+                            "-n": "DM6_unpaired_Mapping",
+                            "-s": "dm6_st",
+                            "-l": "UCSC_DM6_unpaired_Mapping",
+                            "-b": "UCSC_dm6_star3"
+                        }
+                    ]
+                }
+            }
+        },
+        "ID": {
+            "unpaired": {
+                "fourthtest": {
+                    "ENV": "ucsc",
+                    "BIN": "ucsc",
+                    "ANNOTATION": "dm6.gff3.gz",
+                    "OPTIONS": [
+                        {
+                            "-n": "DM6_unpaired_Mapping",
+                            "-s": "dm6_st",
+                            "-l": "UCSC_DM6_unpaired_Mapping",
+                            "-b": "UCSC_dm6_star3"
+                        }
+                    ]
+                }
+            }
+        }
+    },
+    #DE Analysis
+    "DE": {
+        "TOOLS" :
+        {
+          "deseq2" : "Analysis/DE/DESeq2.R",
+          "edger" : "Analysis/DE/EdgeR.R"
+        },
+      "COMPARABLE" :
+        {
+        },
+        "Dm6": {
+            "unpaired": {
+                "test": {
+                    "ANNOTATION": "dm6.gtf.gz",
+                    "GROUPS": [
+                        "ONE"
+                    ],
+                    "REPLICATES": [
+                        "Test_unpaired_R1"
+                    ],
+                    "TYPES": [
+                        "long"
+                    ],
+                    "OPTIONS": [
+                        {
+                           "-t": "gene",
+                            "-g": "gene_id",
+                            "-f": "",
+                            "--fraction": "",
+                            "-p": "",
+                            "-O": "",
+                            "-M": ""
+                        }
+                    ]
+                },
+                "secondtest": {
+                    "ANNOTATION": "dm6.gtf.gz",
+                    "GROUPS": [
+                        "TWO"
+                    ],
+                    "REPLICATES": [
+                        "Test_unpaired_R2"
+                    ],
+                    "TYPES": [
+                        "short"
+                    ],
+                    "OPTIONS": [
+                        {
+                           "-t": "gene",
+                            "-g": "gene_id",
+                            "-f": "",
+                            "--fraction": "",
+                            "-p": "",
+                            "-O": "",
+                            "-M": ""
+                        }
+                    ]
+                }
+            },
+            "paired": {
+                "thirdtest": {
+                    "ANNOTATION": "dm6.gtf.gz",
+                    "GROUPS": [
+                        "THREE"
+                    ],
+                    "REPLICATES": [
+                        "GSM_paired"
+                    ],
+                    "TYPES": [
+                        "long"
+                    ],
+                    "OPTIONS": [
+                        {
+                           "-t": "gene",
+                            "-g": "gene_id",
+                            "-f": "",
+                            "--fraction": "",
+                            "-p": "",
+                            "-O": "",
+                            "-M": ""
+                        }
+                    ]
+                }
+            }
+        },
+        "ID": {
+            "unpaired": {
+                "fourthtest": {
+                    "ANNOTATION": "dm6.gtf.gz",
+                    "GROUPS": [
+                        "FOUR",
+                        "FOUR"
+                    ],
+                    "REPLICATES": [
+                        "Subset_GSM_unpaired_R1",
+                        "Subset_GSM_unpaired_R2"
+                    ],
+                    "TYPES": [
+                        "short",
+                        "short"
+                    ],
+                    "OPTIONS": [
+                        {
+                           "-t": "gene",
+                            "-g": "gene_id",
+                            "-f": "",
+                            "--fraction": "",
+                            "-p": "",
+                            "-O": "",
+                            "-M": ""
+                        }
+                    ]
+                }
+            }
+        }
+    },
+    #DEU Analysis options
+    "DEU": {
+        "TOOLS" :
+        {
+          "dexseq" : "Analysis/DEU/DEXSeq.R"
+          #"edger" : "Analysis/DEU/EdgeR.R"
+        },
+      "COMPARABLE" :
+        {
+        },
+        "Dm6": {
+            "unpaired": {
+                "test": {
+                    "ANNOTATION": "dm6.gtf.gz",
+                    "GROUPS": [
+                        "ONE"
+                    ],
+                    "REPLICATES": [
+                        "Test_unpaired_R1"
+                    ],
+                    "TYPES": [
+                        "long"
+                    ],
+                    "OPTIONS": [
+                        {
+                           "-t": "gene",
+                            "-g": "gene_id",
+                            "-f": "",
+                            "--fraction": "",
+                            "-p": "",
+                            "-O": "",
+                            "-M": ""
+                        }
+                    ]
+                },
+                "secondtest": {
+                    "ANNOTATION": "dm6.gtf.gz",
+                    "GROUPS": [
+                        "TWO"
+                    ],
+                    "REPLICATES": [
+                        "Test_unpaired_R2"
+                    ],
+                    "TYPES": [
+                        "short"
+                    ],
+                    "OPTIONS": [
+                        {
+                           "-t": "gene",
+                            "-g": "gene_id",
+                            "-f": "",
+                            "--fraction": "",
+                            "-p": "",
+                            "-O": "",
+                            "-M": ""
+                        }
+                    ]
+                }
+            },
+            "paired": {
+                "thirdtest": {
+                    "ANNOTATION": "dm6.gtf.gz",
+                    "GROUPS": [
+                        "THREE"
+                    ],
+                    "REPLICATES": [
+                        "GSM_paired"
+                    ],
+                    "TYPES": [
+                        "long"
+                    ],
+                    "OPTIONS": [
+                        {
+                           "-t": "gene",
+                            "-g": "gene_id",
+                            "-f": "",
+                            "--fraction": "",
+                            "-p": "",
+                            "-O": "",
+                            "-M": ""
+                        }
+                    ]
+                }
+            }
+        },
+        "ID": {
+            "unpaired": {
+                "fourthtest": {
+                    "ANNOTATION": "dm6.gtf.gz",
+                    "GROUPS": [
+                        "FOUR",
+                        "FOUR"
+                    ],
+                    "REPLICATES": [
+                        "Subset_GSM_unpaired_R1",
+                        "Subset_GSM_unpaired_R2"
+                    ],
+                    "TYPES": [
+                        "short",
+                        "short"
+                    ],
+                    "OPTIONS": [
+                        {
+                           "-t": "gene",
+                           "-g": "gene_id",
+                           "-f": "",
+                           "--fraction": "",
+                           "-p": "",
+                           "-O": "",
+                           "-M": ""
+                        }
+                    ]
+                }
+            }
+        }
+    },
+#PEAKS Analysis options
+    "PEAKS": {
+        "Dm6": {
+            "unpaired": {
+                "test": {
+                    "ENV": "peaks",
+                    "ANNOTATION": "dm6.gtf.gz",
+                    "CLIP": "reCLIP",
+                    "OPTIONS": [
+                        {
+                            "MINPEAKRATIO": "0.7",
+                            "PEAKDISTANCE": "1",
+                            "PEAKWIDTH": "1",
+                            "PEAKCUTOFF": "0.8",
+                            "MINPEAKHEIGHT": "30",
+                            "USRLIMIT": "10"
+                        }
+                    ]
+                },
+                "secondtest": {
+                    "ENV": "peaks",
+                    "ANNOTATION": "dm6.gtf.gz",
+                    "CLIP": "iCLIP",
+                    "OPTIONS": [
+                        {
+                            "MINPEAKRATIO": "0.7",
+                            "PEAKDISTANCE": "1",
+                            "PEAKWIDTH": "1",
+                            "PEAKCUTOFF": "0.8",
+                            "MINPEAKHEIGHT": "30",
+                            "USRLIMIT": "10"
+                        }
+                    ]
+                }
+            },
+            "paired": {
+                "thirdtest": {
+                    "ENV": "peaks",
+                    "ANNOTATION": "dm6.gtf.gz",
+                    "CLIP": "revCLIP",
+                    "OPTIONS": [
+                        {
+                            "MINPEAKRATIO": "0.7",
+                            "PEAKDISTANCE": "1",
+                            "PEAKWIDTH": "1",
+                            "PEAKCUTOFF": "0.8",
+                            "MINPEAKHEIGHT": "30",
+                            "USRLIMIT": "10"
+                        }
+                    ]
+                }
+            }
+        },
+        "ID": {
+            "unpaired": {
+                "fourthtest": {
+                    "ENV": "peaks",
+                    "ANNOTATION": "dm6.gtf.gz",
+                    "CLIP": "CLIP",
+                    "OPTIONS": [
+                        {
+                            "MINPEAKRATIO": "0.7",
+                            "PEAKDISTANCE": "1",
+                            "PEAKWIDTH": "1",
+                            "PEAKCUTOFF": "0.8",
+                            "MINPEAKHEIGHT": "30",
+                            "USRLIMIT": "10"
+                        }
+                    ]
+                }
+            }
+        }
+    }
+}

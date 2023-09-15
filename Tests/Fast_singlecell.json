@@ -1,0 +1,36 @@
+{
+    "WORKFLOWS": "MAPPING",
+    "BINS": "",
+    "MAXTHREADS": "4",
+    "VERSION": "1.1.0",
+    "SETTINGS": {
+            "Singlecell": {
+                "SAMPLES": [
+                    "SRR5683689_R2"
+                ],
+                "SEQUENCING": "singlecell",
+                "REFERENCE": "/home/fall/Work/Test/MONSDATest/GENOMES/Singlecell/mm10.fa.gz",
+                "ANNOTATION": {
+                    "GTF": "/home/fall/Work/Test/MONSDATest/GENOMES/Singlecell/Test.gtf.gz",
+                    "GFF": ""
+                },
+                "INDEX": "",
+                "PREFIX": ""
+            }
+    },
+    "MAPPING": {
+        "TOOLS": {
+            "star": "STAR"
+        },
+            "Singlecell": {
+                "star": {
+                    "OPTIONS": {
+                        "INDEX": "--limitGenomeGenerateRAM 26000000000",
+                        "MAP": "--outSAMprimaryFlag AllBestScore --soloCBwhitelist None",
+                        #"MAP": "--outSAMprimaryFlag AllBestScore --soloCBwhitelist /home/fall/Work/Test/MONSDATest/GENOMES/Singlecell/whitelist",
+                        "EXTENSION": ""
+                    }
+                }
+            }
+    }
+}

@@ -1,0 +1,97 @@
+{
+    "PREPROCESSING": "RAW,QC",
+    "WORKFLOWS": "",
+    "POSTPROCESSING": "",
+    "REFERENCE": "GENOMES",
+    "BINS": "snakes/scripts",
+    "MAXTHREADS": "6",
+    "GENOME": {
+        "Dm6": "dm6"
+    },
+    "NAME": {
+        "SRA": {
+            "paired": {
+                "test": ""
+            },
+            "unpaired": {
+                "secondtest": ""
+            }
+        }
+    },
+    "SOURCE": {
+        "SRA": {
+            "paired": {
+                "test": "Dm6"
+            },
+            "unpaired": {
+                "secondtest": "Dm6"
+            }
+        }
+    },
+    "SEQUENCING": {
+        "SRA": {
+            "paired": {
+                "test": "paired,fr"
+            },
+            "unpaired": {
+                "secondtest": "unpaired,rf"
+            }
+        }
+    },
+    "SAMPLES": {
+        "SRA": {
+            "paired": {
+                "test": [
+                    "SRR6048757"
+                ]
+            },
+            "unpaired": {
+                "secondtest": [
+                    "SRR9097808"
+                ]
+            }
+        }
+    },
+    "RAW": {
+        "SRA": {
+            "paired": {
+                "test": {
+                    "ENV" : "sra",
+                    "BIN" : "sra"
+                }
+            },
+            "unpaired": {
+                "secondtest": {
+                    "ENV" : "sra",
+                    "BIN" : "sra"
+                }
+            }
+        }
+    },
+    "QC": {
+        "SRA": {
+            "paired": {
+                "test": {
+                    "PREENV": "fastqc",
+                    "PREBIN": "fastqc",
+                    "ENV": "fastqc",
+                    "BIN": "fastqc",
+                    "OPTIONS": [
+                        {}
+                    ]
+                }
+            },
+            "unpaired": {
+                "secondtest": {
+                    "PREENV": "fastqc",
+                    "PREBIN": "fastqc",
+                    "ENV": "fastqc",
+                    "BIN": "fastqc",
+                    "OPTIONS": [
+                        {}
+                    ]
+                }
+            }
+        }
+    }
+}
